@@ -4,6 +4,8 @@ Mammotion Luba Dashboard for your Home Assistant
 # Miss Green – Home Assistant Luba Dashboard
 
 Dieses Repository enthält ein Home-Assistant-Dashboard für einen Mammotion/Luba Mähroboter mit dem Namen **Miss Green**. Das Dashboard bietet Bereichsauswahl, Start/Pause/Dock-Steuerung, Akkustatus, WLAN-/GPS-Anzeige sowie einen einfachen Wochenplaner.
+<img width="1084" height="860" alt="Screenshot 2026-07-05 210731" src="https://github.com/user-attachments/assets/20bcfc2a-2b25-4122-bc05-fd385e09e358" />
+
 
 ## Funktionen
 
