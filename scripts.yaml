@@ -1,0 +1,46 @@
+luba_start_mit_einstellungen:
+  alias: Luba mit Einstellungen starten
+  sequence:
+    - variables:
+        selected_zone: "{{ states('input_select.luba_zone') }}"
+        areas: >
+          {% if selected_zone == 'Bereich 1' %}
+            ['switch.garten_miss_green_bereich_area_1']
+          {% elif selected_zone == 'Bereich 2' %}
+            ['switch.garten_miss_green_bereich_area_2']
+          {% elif selected_zone == 'Bereich 3' %}
+            ['switch.garten_miss_green_bereich_area_3']
+          {% else %}
+            ['switch.garten_miss_green_bereich_area_4', 'switch.garten_miss_green_bereich_area_5', 'switch.garten_miss_green_bereich_area_6']
+          {% endif %}
+        channel_mode: >
+          {% if is_state('input_select.luba_muster', 'Schachbrett') %}1{% else %}0{% endif %}
+        rain_tactics: >
+          {% if is_state('input_boolean.luba_regenstopp', 'on') %}1{% else %}0{% endif %}
+
+    - service: mammotion.start_mow
+      target:
+        entity_id: lawn_mower.garten_miss_green
+      data:
+        modify: false
+        is_mow: true
+        is_dump: false
+        is_edge: false
+        collect_grass_frequency: 5
+        border_mode: "0"
+        job_version: 0
+        job_id: 0
+        speed: "{{ states('input_number.luba_geschwindigkeit') | float }}"
+        ultra_wave: "2"
+        channel_mode: "{{ channel_mode }}"
+        channel_width: "{{ states('input_number.luba_spurabstand') | int }}"
+        rain_tactics: "{{ rain_tactics }}"
+        blade_height: "{{ states('input_number.luba_schnitthoehe') | int }}"
+        toward: 0
+        toward_included_angle: 0
+        toward_mode: "1"
+        mowing_laps: "{{ states('input_number.luba_randrunden') | int }}"
+        obstacle_laps: "1"
+        start_progress: 0
+        areas: "{{ areas }}"
+  mode: single

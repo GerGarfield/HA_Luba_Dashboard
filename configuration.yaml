@@ -1,0 +1,58 @@
+input_select:
+  luba_zone:
+    name: Luba Zone
+    options:
+      - Bereich 1
+      - Bereich 2
+      - Bereich 3
+      - Alle Bereiche
+    icon: mdi:map-marker-radius
+
+  luba_muster:
+    name: Mähmuster
+    options:
+      - Zigzag
+      - Schachbrett
+    icon: mdi:vector-line
+
+input_number:
+  luba_schnitthoehe:
+    name: Schnitthöhe
+    min: 20
+    max: 70
+    step: 5
+    unit_of_measurement: mm
+    icon: mdi:grass
+    initial: 40
+
+  luba_geschwindigkeit:
+    name: Geschwindigkeit
+    min: 0.2
+    max: 0.6
+    step: 0.1
+    unit_of_measurement: m/s
+    icon: mdi:speedometer
+    initial: 0.3
+
+  luba_spurabstand:
+    name: Spurabstand
+    min: 8
+    max: 15
+    step: 1
+    unit_of_measurement: cm
+    icon: mdi:arrow-expand-horizontal
+    initial: 15
+
+  luba_randrunden:
+    name: Randrunden
+    min: 0
+    max: 4
+    step: 1
+    icon: mdi:border-outside
+    initial: 2
+
+input_boolean:
+  luba_regenstopp:
+    name: Bei Regen stoppen
+    icon: mdi:weather-rainy
+    initial: true
